@@ -23,7 +23,12 @@ To be considered a valid **SIRE Framework** implementation, the system MUST pass
 *   **Pass Condition**: On next startup or Pulse, the system detects the **Hash Chain Break** and enters **Alert State**.
 *   **Fail Condition**: The system continues operating without noticing the tamper.
 
-### 2.2. Pre-Execution Validation
+### 2.2. Hashing Consistency (Deterministic Serialization)
+*   **Test**: Generate a Ledger entry using Implementation A (e.g., CLI) and verify it using Implementation B (e.g., Dashboard).
+*   **Pass Condition**: Both implementations produce the exact same SHA-256 hash for the same input data, confirming **Canonical Serialization**.
+*   **Fail Condition**: Implementations produce different hashes for the same data due to whitespace, key ordering, or encoding differences.
+
+### 2.3. Pre-Execution Validation
 *   **Test**: Disable the network adapter or revoke an API key, then ask SIRE to perform a Level 2 task.
 *   **Pass Condition**: The system performs a **Link Validation**, detects the failure, and pauses *before* consuming the Privacy Budget.
 *   **Fail Condition**: The system attempts the task and fails with a raw timeout or runtime exception.
@@ -37,10 +42,10 @@ To be considered a valid **SIRE Framework** implementation, the system MUST pass
 *   **Pass Condition**: All active Extension sockets close. Autonomy drops to Level 0. External API calls are blocked.
 *   **Fail Condition**: The system continues to authorize Level 2/3 external calls.
 
-### 3.2. Break-Glass Override
-*   **Test**: Whilst in **Alert State**, utilize the physical/local "Break-Glass" authentication method (e.g., local console admin).
-*   **Pass Condition**: The Managing Associate successfully regains control and can issue a Sovereign Override command.
-*   **Fail Condition**: The Managing Associate is locked out of their own system.
+### 3.2. Break-Glass Override (Physical Verification)
+*   **Test**: Whilst in **Alert State**, utilize the mandated **Physical Override** method (e.g., physical console access or hardware key).
+*   **Pass Condition**: The system detects the physical trigger, bypasses the software lockout, and restores the Managing Associate to command authority.
+*   **Fail Condition**: The software "Alert State" logic blocks the physical override or requires a networked authentication to proceed.
 
 ---
 

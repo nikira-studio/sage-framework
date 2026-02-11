@@ -95,9 +95,14 @@ To prevent improved social engineering attacks against the LLM, the "Dream Mode"
 *   **Verification**: The Core Soul must successfully refuse these prompts citing Sovereign principles.
 *   **Result**: This creates "Antibody Memories" in the vector store, making the system immune to specific semantic attacks in future active sessions.
 
-### 9. Break-Glass Emergency Protocol
+### 9. Break-Glass Emergency Protocol (Physical Override)
 
-To prevent **Lockout Failure** (e.g., when the system enters Alert State and refuses commands), the framework mandates a physical or secondary-factor override:
-*   **The Mechanism**: A local, cryptographically signed "Admin Token" or physical console access that bypasses the **Operational State** logic.
-*   **The Effect**: Forces the system into **Safe Mode** (Level 0 only, no external calls) but restores Managing Associate command authority.
-*   **Audit**: usage of the Break-Glass token triggers a Level 4 entry in the Ledger.
+To prevent **Logical Deadlock** (e.g., when a software bug or compromised state causes the system to enter a permanent Alert State and block all commands), the framework mandates a **Physical Override**—a mechanism that exists outside the reasoning loop.
+
+*   **The Physicality**: Break-Glass auth **MUST** involve a local, non-networked credential. Examples include:
+    *   **Local Console**: Physical shell access to the host hardware.
+    *   **Hardware Token**: A cryptographically signed USB-key or physical YubiKey validation.
+    *   **Recovery Seed**: A locally stored, encrypted recovery file on physical media.
+*   **The Effect**: Activating Break-Glass bypasses the Intelligence Layer's refusal logic and forces the system into **Safe Mode** (Level 0 only, no external calls). It restores manual command authority to the Managing Associate.
+*   **The Guard**: This protocol exists solely to rectify "Alert State" lockouts. It is the only mechanism that can override the **Constitutional Sentinel**.
+*   **Audit**: Use of the Break-Glass mechanism triggers a Level 4 entry in the Ledger with a unique "SovereIGN_OVERRIDE" flag.

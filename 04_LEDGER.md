@@ -8,9 +8,16 @@ A SIRE implementation **MUST** fulfill the following cryptographic requirements 
 
 ### The Hash Chain
 To prevent history rewriting (gaslighting or cover-ups), the Ledger implements a **SHA-256 Hash Chain**:
-*   **Structure**: `Entry(N).hash` = `SHA256(Entry(N).content + Entry(N-1).hash)`
+*   **Structure**: `Entry(N).hash` = `SHA256(Entry(N).canonical_content + Entry(N-1).hash)`
 *   **Verification**: The system must validate the chain integrity on startup.
 *   **Tamper Response**: If the hash chain is broken, the system **MUST** immediately enter **Alert State** and lock down all autonomy until the Managing Associate intervenes.
+
+### Canonical Serialization (Deterministic Hashing)
+To ensure the audit log remains verifiable across different programming languages (e.g., a Python implementation verifying a Rust Ledger), all entries **MUST** be serialized into a **Canonical Format** before hashing:
+*   **Key Sorting**: Dictionary/Map keys must be sorted alphabetically.
+*   **No Whitespace**: All optional whitespace (spaces, tabs, newlines) between tokens must be removed.
+*   **Standard Encoding**: Content must be encoded as `UTF-8`.
+*   **Consistency**: A `SIRE-v1` compliant Ledger must produce identical hashes for identical data regardless of implementation stack.
 
 ### Single Source of Truth
 *   **Requirement**: All components—including Extensions, Staff Associates, and external webhooks—**MUST** pipe their operational logs to the Main Ledger.
