@@ -21,7 +21,7 @@ To ensure the audit log remains verifiable across different programming language
 *   **Standard Encoding**: Content must be encoded as `UTF-8`.
 *   **Numeric Format**: Numbers must be represented in their most compact form (no trailing zeros, no leading zeros except for zero itself).
 *   **Unicode Escaping**: Only characters that MUST be escaped (e.g., `"`, `\`, control characters) may be escaped; all other Unicode characters are represented directly.
-*   **Consistency**: A `SIRE-v1.2` compliant Ledger must produce identical hashes for identical data regardless of implementation stack.
+*   **Consistency**: A `SIRE-v1.0` compliant Ledger must produce identical hashes for identical data regardless of implementation stack.
 
 **Test Case (Verification Standard)**:
 *   **Input Data**:

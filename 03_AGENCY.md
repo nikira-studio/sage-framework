@@ -80,7 +80,7 @@ Communication between the **Main Soul** (Manager) and a **Specialist** **MUST** 
 ```json
 {
   "manifest_id": "uuid-v4",
-  "manifest_version": "1.2",
+  "manifest_version": "1.0",
   "timestamp": "ISO-8601-UTC",
   "authorizing_associate": "managing_associate_id",
   

@@ -1,5 +1,5 @@
 # SIRE: Sovereign Constitutional Governance
-**Version 1.2**
+**Version 1.0**
 
 **A design pattern for building privacy-first AI assistants that actually remember who you are.**
 
@@ -28,6 +28,8 @@ Think of it as a pattern language for AI assistants that respect your privacy an
 **This is a framework.** You implement it using whatever stack you prefer (e.g., JavaScript, Go, Rust, etc.).
 
 ---
+
+
 
 ## Why You Might Want This
 
@@ -73,7 +75,8 @@ Immutable log of every decision with:
 - Who triggered it
 - Why it was allowed
 - Whether data left the domain
-- Tamper-evident hash chain
+- Tamper-evident hash chain with **JCS (JSON Canonicalization Scheme)** for cross-platform hash verification
+- **Tiered Archival & Pruning**: Merkle Root preservation for long-term storage efficiency
 - Impact-Based Thresholds determine logging requirements
 
 ### 5. **Privacy Budget** (Weighted Sovereignty Exposure)
@@ -81,6 +84,8 @@ Track when data leaves your domain with intelligent routing:
 - Heuristic-based decision trees route tasks by category (Code Generation, Research, Finance, PII)
 - Dynamic routing curves (aggressive, balanced, conservative) adjust behavior as budget depletes
 - Prefer local processing for low-sensitivity tasks, preserve budget for high-complexity operations
+- **Output-Side Sentinel Scans**: Prevent multi-tenant memory leaks in autonomous summaries
+- **PASS Protocol**: Pre-Authorized Safety Scripts for Alert mode emergency fallbacks
 - You control the budget and routing strategy
 
 ---
