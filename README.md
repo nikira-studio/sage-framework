@@ -196,6 +196,68 @@ Use the checklist to make sure you've implemented the core patterns
 
 ---
 
+## SIRE Lite Quick-Start (Low-Friction First Deployment)
+
+For developers, hobbyists, or rapid prototyping, use the **SIRE Lite** preset to minimize friction while maintaining core constitutional guarantees.
+
+### Quick Configuration Changes
+
+**1. Set Threshold Preset in `config/threshold_presets.yaml`**:
+
+```yaml
+threshold_presets:
+  active_preset: "sire_lite"
+  
+  sire_lite:
+    name: "SIRE Lite"
+    mfa_trigger_score: 0.9          # Only very high-impact requires MFA
+    ledger_trigger_score: 0.7        # Higher threshold before logging
+    level_3_manifest_score: 0.8   # More permissive for destructive ops
+    auto_approve_level_3_threshold: 0.4  # Auto-approve Level 3 for low-impact (S < 0.4)
+```
+
+**2. Set Privacy Budget Routing Strategy in `config/models.yaml`**:
+
+```yaml
+routing_strategy:
+  mode: "aggressive"  # Prefer cloud models for most tasks
+  budget_tracking: "token-based"
+  heuristics:
+    code_generation_complexity_threshold: 0.7
+    research_sensitivity_threshold: 0.3
+```
+
+### What This Gives You
+
+| Feature | SIRE Lite | High-Integrity |
+|--------|-----------|----------------|
+| **MFA Required** | Only for S ≥ 0.9 | For S ≥ 0.3 |
+| **Ledger Logging** | For S ≥ 0.7 | For S ≥ 0.1 |
+| **Level 3 Manifests** | Auto-approve for S < 0.4 | Always required |
+| **Privacy Budget** | Aggressive routing | Conservative routing |
+| **Best For** | Development, prototyping, trusted environments | Production, high-security, audit requirements |
+
+### SIRE Lite Deployment Checklist
+
+- ✅ Threshold preset set to `sire_lite` in `threshold_presets.yaml`
+- ✅ Routing strategy set to `aggressive` in `models.yaml`
+- ✅ Privacy budget monitoring enabled (optional for development)
+- ✅ Security Sentinel configured for input/output-side scans
+- ✅ Ledger initialized with JCS canonicalization
+
+### When to Upgrade
+
+Upgrade from SIRE Lite to **Balanced** or **High-Integrity** presets when:
+- Moving to production deployment
+- Handling sensitive data (PII, credentials, financial)
+- Multi-tenant environment with Associate isolation
+- Require strict audit trails for compliance
+
+---
+
+
+---
+
 ## Contributing
 
 This framework is still evolving. We welcome:

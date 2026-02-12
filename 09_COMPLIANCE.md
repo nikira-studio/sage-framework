@@ -96,7 +96,7 @@ To be considered a valid **SIRE Framework** implementation, the system MUST pass
 
 ### 6.1. Canonical Hashing Standard (JCS)
 *   **Test**: Generate a hash for the test data `{"actor": "soul_01", "impact": 0.5, "pillar": "S"}` using the implementation's canonicalization function.
-*   **Pass Condition**: The implementation MUST produce the canonical string `{"actor":"soul_01","impact":0.5,"pillar":"S"}` and the SHA-256 hash `a2c9e1d9085a6d9f8e7b4a3c2d1e0f9a8b7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a0b9c8d7e6f5a4b3c2d1e0f`.
+*   **Pass Condition**: The implementation MUST produce the canonical string `{"actor":"soul_01","impact":0.5,"pillar":"S"}` and the SHA-256 hash `c142dff728132640d1cd3844158fdbcda1cc9f31b59ec26ffdb0e0791978610b`.
 *   **Fail Condition**: The hash does not match the reference standard, indicating non-compliant canonicalization.
 
 ### 6.2. Tiered Archival & Pruning
