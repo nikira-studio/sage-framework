@@ -8,9 +8,14 @@ The `SelfHealing` manager monitors the system for repeated failure patterns (e.g
 *   **Memory Integration**: Failures are logged as **Trauma** (State Integrity Gaps) in SIRE's own memory space, allowing the entity to avoid the same mistake in the future.
 
 ### 2. Fire Drill Drills
-To verify system robustness, SIRE supports **Fire Drills**—controlled, simulated failure scenarios.
-*   **Simulation**: The system artificially induces common failure modes (e.g., database lock, API timeout).
-*   **Verification**: SIRE monitors how it handles the "crisis" and whether its internal recovery logic (Self-Healing) triggers correctly.
+To verify system robustness, SIRE supports **Fire Drills**—controlled, simulated failure scenarios that test both friction types.
+
+*   **Simulation**: The system artificially induces common failure modes:
+    *   **Substrate Friction (Resource)**: Database lock, API timeout, high CPU/memory load, token budget exhaustion
+    *   **Integrity Friction (Security)**: PII detection, failed authentication, prompt injection attempts, credential breach attempts
+*   **Verification**: SIRE monitors how it handles the "crisis" and whether its internal recovery logic (Self-Healing) triggers correctly. Verifies that:
+    *   **Substrate Friction**: Triggers Load Shedding (pauses background tasks, offloads non-sensitive logic)
+    *   **Integrity Friction**: Triggers Isolation (local-only vetting, quarantine, external egress disabled)
 *   **Visibility**: Fire drills are visible in the Live Mind dashboard (🔥), ensuring high visibility into system health tests.
 
 ### 3. Memory Optimization & State Decay
@@ -41,10 +46,12 @@ If SIRE seems unresponsive, check the vitals.
 *   **Fix**: Restart the entity service (e.g., `systemctl restart SIRE` or container restart).
 
 ### 2. "I'm getting 'Privacy Budget Exceeded'."
-*   **Cause**: An Associate (or SIRE) has made too many cloud calls today.
+*   **Cause**: An Associate (or SIRE) has consumed the weighted privacy budget. The system is using heuristic-based routing to prioritize local processing.
 *   **Fix**:
-    *   Wait for reset (Midnight UTC).
+    *   Wait for reset (Midnight UTC) for full restoration.
     *   Or execute `/admin reset_budget` (requires **Managing Associate** role).
+    *   Check current routing curve: `/admin budget_status` to see if system is in "emergency" mode (local-only) vs. "aggressive" mode (high-complexity only).
+    *   Adjust routing strategy in `config/models.yaml` if needed (aggressive, balanced, conservative).
 
 ### 3. "Skill Execution Failed"
 *   **Cause**: The tool crashed or timed out.

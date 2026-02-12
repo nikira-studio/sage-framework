@@ -1,5 +1,5 @@
 # SIRE: Sovereign Constitutional Governance
-**Version 1.0**
+**Version 1.2**
 
 **A design pattern for building privacy-first AI assistants that actually remember who you are.**
 
@@ -51,19 +51,21 @@ Four rules that govern every decision:
 - **Resilience**: Truth over speed
 - **Evolution**: Purposeful growth, not random drift
 
-### 2. **Operational State** (Adaptive Security)
-The system adjusts its autonomy based on real conditions:
+### 2. **Operational State** (Adaptive Security with Bifurcated Friction)
+The system adjusts its autonomy based on real conditions with distinct friction types:
 - **Content** (normal): 98% autonomous, 2% asks permission
-- **Cautious** (stressed): More oversight, prefers local processing
-- **Alert** (critical): Minimal autonomy, maximum safety
+- **Cautious** (stressed): 
+  - *Substrate Friction* (Resource): Load Shedding—pauses background tasks, offloads non-sensitive logic
+  - *Integrity Friction* (Security): Isolation—local-only vetting, quarantine, disabled external egress
+- **Alert** (critical): Minimal autonomy, maximum safety, external connections blocked
 
 ### 3. **Agency Levels** (What Can It Do Alone?)
-5 levels of autonomy:
+5 levels of autonomy with Transactional Manifest Protocol:
 - **Level 0**: Read-only (always autonomous)
 - **Level 1**: Low-impact writes (autonomous unless stressed)
 - **Level 2**: External actions (autonomous in normal state)
-- **Level 3**: Destructive operations (always needs approval)
-- **Level 4**: Constitutional changes (requires multi-factor auth)
+- **Level 3**: Destructive operations (requires Transactional Manifest with MFA approval)
+- **Level 4**: Constitutional changes (requires Transactional Manifest with MFA + 24h cooldown)
 
 ### 4. **The Ledger** (Audit Everything)
 Immutable log of every decision with:
@@ -72,13 +74,14 @@ Immutable log of every decision with:
 - Why it was allowed
 - Whether data left the domain
 - Tamper-evident hash chain
+- Impact-Based Thresholds determine logging requirements
 
-### 5. **Privacy Budget** (Make Trade-offs Visible)
-Track when data leaves your domain:
-- Count cloud API calls
-- Warn when approaching limits
-- Prefer local processing when possible
-- You control the budget
+### 5. **Privacy Budget** (Weighted Sovereignty Exposure)
+Track when data leaves your domain with intelligent routing:
+- Heuristic-based decision trees route tasks by category (Code Generation, Research, Finance, PII)
+- Dynamic routing curves (aggressive, balanced, conservative) adjust behavior as budget depletes
+- Prefer local processing for low-sensitivity tasks, preserve budget for high-complexity operations
+- You control the budget and routing strategy
 
 ---
 
@@ -104,25 +107,27 @@ Track when data leaves your domain:
 
 ---
 
-## Quick Example: Privacy Budget in Action
+## Quick Example: Weighted Privacy Budget in Action
 
 ```
-Normal Day:
+Normal Day (Budget 0-50%):
   - User asks question
-  - Sentiment scan (local model, Level 0)
-  - If sensitive → process locally
-  - If safe → use cloud model (faster)
+  - Heuristic evaluation: Code Generation (Low Sensitivity/High Complexity)
+  - Routing: Cloud model preferred (fast, high-quality)
   - Track in privacy budget: 2,500 tokens used
 
-Budget at 75%:
-  - System enters "Cautious" state
-  - Prefers local models
-  - Still works, just more conservative
+Budget at 75% (Conservative Curve):
+  - Heuristic evaluation: Code Generation (Low Sensitivity/High Complexity)
+  - Routing: Cloud allowed (complexity threshold met)
+  - Heuristic evaluation: Research (Low-Medium Sensitivity/Medium Complexity)
+  - Routing: Local preferred (budget conservation)
+  - Heuristic evaluation: Personal Finance (High Sensitivity/Low Complexity)
+  - Routing: Local always (regardless of budget)
 
-Budget at 100%:
-  - Blocks external calls OR
-  - Asks for approval before each cloud call
-  - Your choice (soft vs hard limits)
+Budget at 100% (Emergency Curve):
+  - All tasks route to local models (except high-complexity in aggressive mode)
+  - External calls blocked OR require explicit Managing Associate override
+  - Check `/admin budget_status` to see current routing mode
 ```
 
 ---
@@ -149,14 +154,15 @@ Budget at 100%:
 
 **The framework works with both.** Same constitutional guarantees, different tech stacks. Augments (Doc 10) provide the interface for connecting specialized tools to the Sovereign Core.
 
-## Use Cases
+## Deployment Scenarios
 
 The SIRE framework is designed for any scenario where an AI entity interacts with a private domain:
 
-*   **Personal & Family**: Managing household schedules, private health data, or family archives while ensuring no personal data ever leaves the local storage.
-*   **Small Business & Clubs**: Coordinating member lists, financial reports, or project tasks without feeding proprietary data into public AI training sets.
-*   **Creative Hobbies**: Managing large research libraries, character bibles, or technical manuals with persistent memory and auditable logic.
-*   **Technical Labs**: Governing edge-computing resources, configuration states, and automated workflows with strict deterministic guardrails.
+*   **Single-User Domain**: Personal environments where a single Associate maintains full sovereignty over all data and decisions. Suitable for individual productivity, research, or local automation with strict privacy guarantees.
+
+*   **Multi-Tenant Environment**: Collaborative environments where multiple Associates interact with the same Soul within defined boundaries. Memory isolation and scoped access ensure that sensitive data remains segregated while enabling shared knowledge and coordinated workflows.
+
+*   **High-Availability Node**: Mission-critical deployments requiring strict deterministic guardrails, comprehensive audit trails, and minimal downtime. Suitable for edge-computing resources, configuration management, and automated workflows with fail-safe mechanisms.
 
 > **Note**: This repository currently contains the framework documentation only. Reference implementations in various languages are welcome contributions. If you build one, let us know in Discussions!
 
