@@ -8,6 +8,7 @@ The SIRE interface is designed as a "Cyber-Sovereign" system—a blend of high-t
     *   **Void Mode (Dark)**: Primary state (#0f1115).
     *   **Solar Mode (Light)**: High-contrast state for accessibility.
 *   **Motion (Physiology)**: Subtle pulsing colors indicate system state (Cyan=Idle, Blue=Thinking, Amber=Working, Red=Refusal).
+*   **State Annotation**: Cautious state displays friction type in State Details (e.g., "State: Cautious [Resource]" or "State: Cautious [Security]").
 *   **Typography**: `Inter` for UI; `JetBrains Mono` for internal monologues and logs.
 
 ## 2. The Sovereign Dashboard Architecture

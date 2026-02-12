@@ -15,13 +15,48 @@ Every Associate input passes through the **Security Sentinel** before reaching a
 
 Every external API call is a sovereignty trade. The Privacy Budget makes this trade explicit and measurable.
 
-**The Philosophy**: Awareness, not blocking. The goal is to make the invisible visible.
+**The Philosophy**: Awareness, not blocking. The cost is **Sovereignty Exposure**, not just tokens. The goal is to make the invisible visible.
+
+**Budget Tracking Models**:
 - **Model 1: Token-Based** (Default): Track cloud API tokens consumed daily.
 - **Model 2: Dollar-Based**: Track actual API costs.
 - **Model 3: Action-Based**: Track number of external calls.
 
+**Weighted Privacy Budget (Dynamic Routing)**:
+The budget operates as a managed resource curve, not a cliff. As the budget depletes, the system uses **Heuristic-Based Decision Trees** to intelligently route tasks.
+
+**Heuristic-Based Decision Tree**:
+Categorical triggers determine optimal routing:
+
+| Category | Sensitivity | Complexity | Routing Strategy |
+| :--- | :--- | :--- | :--- |
+| **Code Generation** | Low | High | Cloud (preferred) → Local (if budget >70%) |
+| **Research/Analysis** | Low-Medium | Medium | Cloud (preferred) → Local (if budget >70%) |
+| **Personal Finance** | High | Low | Local (always) |
+| **Credential Operations** | High | Low-Medium | Local (always) |
+| **PII Processing** | High | Variable | Local (always) |
+| **Task Summarization** | Low | Low-Medium | Local (preferred) → Cloud (if budget <30%) |
+
+**Dynamic Routing Curves**:
+The system adjusts routing behavior based on budget consumption:
+
+- **Budget 0-50%**: Standard routing (Cloud preferred for most tasks)
+- **Budget 50-70%**: Conservative routing (Local preferred for non-complex tasks)
+- **Budget 70-90%**: Aggressive routing (Local enforced for all except high-complexity)
+- **Budget 90-100%**: Emergency routing (Local-only, external calls blocked)
+
+**Configuration (`config/models.yaml`)**:
+```yaml
+routing_strategy:
+  mode: "balanced"  # Options: aggressive, balanced, conservative
+  budget_tracking: "token-based"  # Options: token-based, dollar-based, action-based
+  heuristics:
+    code_generation_complexity_threshold: 0.7
+    research_sensitivity_threshold: 0.3
+```
+
 **Enforcement Modes**:
-- **Soft Limits** (Default): Warn when approaching limit (70%). Adjust Operational State to Cautious to favor Level 0 models.
+- **Soft Limits** (Default): Warn when approaching limit (70%). Adjust Operational State to Cautious. Adjust routing curve to conserve budget.
 - **Hard Limits**: Block external calls at 100% until Managing Associate override.
 
 ### 3. The Vault & Keys

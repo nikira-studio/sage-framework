@@ -35,13 +35,24 @@ monitoring:
   heartbeat_seconds: 60
   state_thresholds:
     cautious:
+      # Substrate Friction (Resource) Thresholds
       memory_utilization: 0.60
       processing_load: 0.70
+      token_budget_percentage: 0.70
       error_rate: 0.05
+      # Integrity Friction (Security) Thresholds
+      pii_detection_count: 5
+      failed_auth_attempts: 3
+      unusual_traffic_threshold: 2.0
     alert:
+      # Substrate Friction (Resource) Thresholds
       memory_utilization: 0.90
       processing_load: 0.90
+      token_budget_percentage: 0.90
+      # Integrity Friction (Security) Thresholds
       security_events_threshold: 3
+      prompt_injection_detected: true
+      credential_breach_attempt: true
 ```
 
 ## Specialist Registry (`specialists.yaml`)
@@ -59,6 +70,99 @@ specialists:
     level: 1
     base_dir: "/mnt/data/reports"
     augments: ["read_only", "batch_process"]
+
+## Intelligence Level Configuration (`models.yaml`)
+Define the intelligence tiers and dynamic routing strategy.
+
+```yaml
+intelligence_levels:
+  level_0:
+    name: "Reflex"
+    model_type: "local"
+    max_tokens: 2048
+    use_case: ["heartbeat", "pii_scan", "background_maintenance"]
+  
+  level_1:
+    name: "Workhorse"
+    model_type: "cloud"
+    max_tokens: 4096
+    use_case: ["proactive_tasks", "summaries"]
+  
+  level_2:
+    name: "Specialist"
+    model_type: "cloud"
+    max_tokens: 8192
+    use_case: ["research", "coding", "analysis"]
+  
+  level_3:
+    name: "Architect"
+    model_type: "cloud"
+    max_tokens: 16384
+    use_case: ["high_stakes_decisions", "soul_updates"]
+
+# Weighted Privacy Budget Configuration
+routing_strategy:
+  mode: "balanced"  # Options: aggressive, balanced, conservative
+  budget_tracking: "token-based"  # Options: token-based, dollar-based, action-based
+  
+  # Heuristic-Based Routing Thresholds
+  heuristics:
+    code_generation_complexity_threshold: 0.7
+    research_sensitivity_threshold: 0.3
+    summarization_sensitivity_threshold: 0.2
+  
+  # Dynamic Routing Curves
+  curves:
+    aggressive:
+      0_50: "standard"
+      50_70: "standard"
+      70_90: "conservative"
+      90_100: "emergency"
+    balanced:
+      0_50: "standard"
+      50_70: "conservative"
+      70_90: "aggressive"
+      90_100: "emergency"
+    conservative:
+      0_30: "standard"
+      30_50: "conservative"
+      50_100: "aggressive"
+```
+
+## Threshold Presets Configuration (`threshold_presets.yaml`)
+Define universal governance thresholds that replace user profiles.
+
+```yaml
+threshold_presets:
+  # Low-Friction Preset (Minimal approvals for low-impact operations)
+  low_friction:
+    name: "Low-Friction Threshold"
+    mfa_trigger_score: 0.7
+    ledger_trigger_score: 0.5
+    level_3_manifest_score: 0.6
+    description: "Suitable for single-user domains with trusted environment"
+  
+  # Balanced Preset (Moderate approvals for mixed operations)
+  balanced:
+    name: "Balanced Threshold"
+    mfa_trigger_score: 0.5
+    ledger_trigger_score: 0.3
+    level_3_manifest_score: 0.4
+    description: "Suitable for multi-tenant environments with diverse operations"
+  
+  # High-Integrity Preset (Strict approvals for all operations)
+  high_integrity:
+    name: "High-Integrity Threshold"
+    mfa_trigger_score: 0.3
+    ledger_trigger_score: 0.1
+    level_3_manifest_score: 0.2
+    description: "Suitable for high-availability nodes with strict audit requirements"
+
+# Universal Enforcement Rules (Apply to all presets)
+universal_enforcement:
+  # High-impact operations always trigger Ledger and MFA
+  min_score_for_always_log: 0.5
+  min_score_for_always_mfa: 0.5
 ```
 
 ## Context Triggers (Knowledge Injection)

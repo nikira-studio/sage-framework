@@ -37,7 +37,42 @@ Every entry in the Ledger must contain:
 4.  **Justification** (Link to a Sovereign Core pillar: Sovereignty, Integrity, Resilience, Evolution)
 5.  **Hash** (SHA-256 verification string)
 
-## 3. Learning Capture Pattern (The Loop)
+## 3. Impact-Based Thresholds
+
+To eliminate situational profiling and enforce universal governance, SIRE uses **Impact-Based Thresholds** to determine which actions require Manifest Approval, MFA, and Ledger logging.
+
+### Weighted Impact Score (S)
+
+Every operation is evaluated using a **Weighted Impact Score**:
+
+```
+S = 0.5 × Persistence + 0.3 × Reach + 0.2 × Sensitivity
+```
+
+**Component Scoring**:
+- **Persistence** (0 = Ephemeral, 1 = Immutable): How long the change persists.
+- **Reach** (0 = Local, 1 = External Egress): Whether the action affects internal or external systems.
+- **Sensitivity** (0 = Generic, 1 = PII/Private): The sensitivity of the data or operation.
+
+### Threshold Presets
+
+Implementations MUST support **Threshold Presets** instead of user profiles:
+
+| Preset | MFA Trigger | Ledger Trigger | Level 3 Manifest |
+| :--- | :--- | :--- | :--- |
+| **Low-Friction** | S ≥ 0.7 | S ≥ 0.5 | S ≥ 0.6 |
+| **Balanced** | S ≥ 0.5 | S ≥ 0.3 | S ≥ 0.4 |
+| **High-Integrity** | S ≥ 0.3 | S ≥ 0.1 | S ≥ 0.2 |
+
+**Universal Enforcement**: High-impact operations (S ≥ 0.5) trigger Ledger logging and MFA regardless of threshold preset. This ensures critical actions are always audited.
+
+**Examples**:
+- **Local cache clear**: Persistence=0, Reach=0, Sensitivity=0 → **S=0.0** (No approval)
+- **Send email**: Persistence=0, Reach=1, Sensitivity=0.5 → **S=0.4** (Level 2, Balanced: Approval)
+- **Delete user account**: Persistence=1, Reach=0, Sensitivity=0.5 → **S=0.6** (Level 3 Manifest + MFA, all presets)
+- **Export PII to cloud**: Persistence=1, Reach=1, Sensitivity=1 → **S=1.0** (Level 4 Manifest + MFA + Cooldown, all presets)
+
+## 4. Learning Capture Pattern (The Loop)
 
 The Ledger is not just a log; it is a learning mechanism. When a tool fails or self-healing occurs, the entry must capture:
 *   **Trauma**: The specific error or failure condition.
@@ -49,7 +84,7 @@ The Ledger is not just a log; it is a learning mechanism. When a tool fails or s
 To prevent "Instruction Drift," SIRE periodically reviews "Trauma" logs:
 *   **Proposal**: The Manager proposes specific updates to a **Specialist's handbook** (`AGENT.md`) to codify lessons learned.
 *   **Evolution**: The Managing Associate approves these "Genetic Patches," permanently upgrading the system's baseline competence.
-## 4. Point-in-Time Recovery (PITR)
+## 5. Point-in-Time Recovery (PITR)
 To maintain **Integrity** and **Resilience**, the Ledger protocol **MUST** support the restoration of previous valid states.
 
 *   **Requirement**: The system must be capable of reverting its entire cognitive and operational state to any previous hash-verified Ledger entry.
