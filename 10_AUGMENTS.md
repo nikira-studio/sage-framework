@@ -36,7 +36,7 @@ These augments are **optional extensions** to the core SIRE Framework. While not
 
 ### 6. Cognitive Visuals (A2UI)
 *   **Goal**: The entity's ability to "draw" its thoughts for Associates via task-specific UIs.
-*   **Method**: **Agent-to-UI (A2UI)** framework where the entity can push custom components (e.g., a "Network Map") to the Dashboard on-demand.
+*   **Method**: **Agent-to-UI (A2UI)** framework where the entity can push custom components (e.g., a "System Status Graph") to the Dashboard on-demand.
 
 ### 7. Birth & Calibration (Interactive Awakening)
 *   **Goal**: A natural setup experience driven by the entity.

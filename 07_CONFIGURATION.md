@@ -48,13 +48,13 @@ Define specialized sub-agents and their directory jails.
 
 ```yaml
 staff:
-  - name: "Network Technician"
-    role: "network_ops"
+  - name: "Technical Associate"
+    role: "sys_ops"
     level: 2
-    base_dir: "/opt/network-configs" # Directory Jail
-    augments: ["ssh", "container_mgmt"]
-  - name: "Business Analyst"
-    role: "biz_intel"
+    base_dir: "/opt/system-configs" # Directory Jail
+    augments: ["remote_access", "service_mgmt"]
+  - name: "Information Analyst"
+    role: "data_intel"
     level: 1
     base_dir: "/mnt/data/reports"
     augments: ["read_only", "batch_process"]
@@ -69,10 +69,10 @@ To prevent "Memory Drift" and ensure the entity always has the correct Single So
 *   **Example**:
     ```yaml
     triggers:
-      - keywords: ["docker", "container", "compose"]
-        inject: ["skills/DOCKER_STANDARDS.md"]
-      - keywords: ["firewall", "vyatta", "routing"]
-        inject: ["skills/NETWORK_SOP.md"]
+      - keywords: ["virtualization", "container", "orchestration"]
+        inject: ["skills/SYTEM_STANDARDS.md"]
+      - keywords: ["security", "firewall", "routing"]
+        inject: ["skills/SEC_OPS.md"]
     ```
 *   **The Result**: The Technician's context window is automatically "pre-loaded" with the required manual, ensuring they never operate on generic (potentially hallucinated) knowledge.
 

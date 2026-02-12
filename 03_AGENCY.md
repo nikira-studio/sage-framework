@@ -52,10 +52,10 @@ Communication between the **Main Soul** (Manager) and a **Staff Associate** (Tec
 {
   "id": "uuid-v4",
   "source": "main_soul",
-  "target": "network_technician",
+  "target": "tech_associate",
   "intent": {
-    "goal": "Backup NAS Constraints",
-    "success_criteria": ["exit_code:0", "file_exists:/backup/nas_config.tar.gz"]
+    "goal": "System Integrity Audit",
+    "success_criteria": ["exit_code:0", "file_exists:/logs/integrity_report.log"]
   },
   "constraints": {
     "allow_network": true,
@@ -63,7 +63,7 @@ Communication between the **Main Soul** (Manager) and a **Staff Associate** (Tec
     "read_only": false
   },
   "context": {
-    "auth_token_scope": "nas_backup_only"
+    "auth_token_scope": "system_audit_only"
   }
 }
 ```
