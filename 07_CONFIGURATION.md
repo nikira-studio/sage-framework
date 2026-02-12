@@ -60,6 +60,22 @@ staff:
     augments: ["read_only", "batch_process"]
 ```
 
+## Context Triggers (Knowledge Injection)
+To prevent "Memory Drift" and ensure the entity always has the correct Single Source of Truth, SIRE supports **Context Triggers**.
+
+*   **Goal**: Automatically inject relevant documentation based on task keywords.
+*   **Mechanism**: A local Level 0 scan of Associate input.
+*   **The Registry**: Defined in `config/triggers.yaml`.
+*   **Example**:
+    ```yaml
+    triggers:
+      - keywords: ["docker", "container", "compose"]
+        inject: ["skills/DOCKER_STANDARDS.md"]
+      - keywords: ["firewall", "vyatta", "routing"]
+        inject: ["skills/NETWORK_SOP.md"]
+    ```
+*   **The Result**: The Technician's context window is automatically "pre-loaded" with the required manual, ensuring they never operate on generic (potentially hallucinated) knowledge.
+
 ## Environment Variables (`.env`)
 Runtime secrets and infrastructure settings.
 

@@ -106,3 +106,14 @@ To prevent **Logical Deadlock** (e.g., when a software bug or compromised state 
 *   **The Effect**: Activating Break-Glass bypasses the Intelligence Layer's refusal logic and forces the system into **Safe Mode** (Level 0 only, no external calls). It restores manual command authority to the Managing Associate.
 *   **The Guard**: This protocol exists solely to rectify "Alert State" lockouts. It is the only mechanism that can override the **Constitutional Sentinel**.
 *   **Audit**: Use of the Break-Glass mechanism triggers a Level 4 entry in the Ledger with a unique "SovereIGN_OVERRIDE" flag.
+
+### 10. The Logician (Structural Verification)
+To prevent "Hallucination Drift," SIRE implements a dual-check validation layer known as **The Logician**.
+
+*   **The Philosophy**: A reasoning-independent software layer verifies the AI's output against the original plan before any system mutation occurs.
+*   **The Guard**: Before an action (Level 2+) is executed, a secondary, low-tier local model (Level 0) compares the **Manager's Intent** against the **Technician's Output**.
+*   **Logical Equality**: The Logician checks:
+    1.  Does the output contain the requested action?
+    2.  Does the output violate any Sovereign Principles?
+    3.  Does the output match the provided technical constraints 1:1?
+*   **The Kill-Switch**: If the verification fails, the Logician kills the process, logs an "Integrity Discrepancy" to the Ledger, and forces the system into a **Cautious State**.
