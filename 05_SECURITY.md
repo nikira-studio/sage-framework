@@ -111,7 +111,7 @@ To prevent **Logical Deadlock** (e.g., when a software bug or compromised state 
 To prevent "Hallucination Drift," SIRE implements a dual-check validation layer known as **The Logician**.
 
 *   **The Philosophy**: A reasoning-independent software layer verifies the AI's output against the original plan before any system mutation occurs.
-*   **The Guard**: Before an action (Level 2+) is executed, a secondary, low-tier local model (Level 0) compares the **Manager's Intent** against the **Technician's Output**.
+*   **The Guard**: Before an action (Level 2+) is executed, a secondary, low-tier local model (Level 0) compares the **Manager's Intent** against the **Specialist's Output**.
 *   **Logical Equality**: The Logician checks:
     1.  Does the output contain the requested action?
     2.  Does the output violate any Sovereign Principles?

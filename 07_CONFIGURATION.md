@@ -43,17 +43,17 @@ monitoring:
       cpu_load: 0.90
       security_events_threshold: 3
 
-## Staff Registry (`staff.yaml`)
+## Specialist Registry (`specialists.yaml`)
 Define specialized sub-agents and their directory jails.
 
 ```yaml
-staff:
-  - name: "Technical Associate"
+specialists:
+  - name: "System Specialist"
     role: "sys_ops"
     level: 2
     base_dir: "/opt/system-configs" # Directory Jail
     augments: ["remote_access", "service_mgmt"]
-  - name: "Information Analyst"
+  - name: "Information Specialist"
     role: "data_intel"
     level: 1
     base_dir: "/mnt/data/reports"
@@ -74,7 +74,7 @@ To prevent "Memory Drift" and ensure the entity always has the correct Single So
       - keywords: ["security", "firewall", "routing"]
         inject: ["skills/SEC_OPS.md"]
     ```
-*   **The Result**: The Technician's context window is automatically "pre-loaded" with the required manual, ensuring they never operate on generic (potentially hallucinated) knowledge.
+*   **The Result**: The Specialist's context window is automatically "pre-loaded" with the required manual, ensuring they never operate on generic (potentially hallucinated) knowledge.
 
 ## Environment Variables (`.env`)
 Runtime secrets and infrastructure settings.

@@ -49,11 +49,11 @@ SIRE's personality is auditable. Every autonomous update to preferences or trait
 *   **Ancestry**: A Git-style timeline of personality shifts.
 *   **Rollback**: The Managing Associate can instantly revert the entity to a previous "Soul State" to correct drift.
 
-### Staff Associate Model (Scoped Souls)
-The functionality of the entity is extended through **Staff Associates** (Technicians).
-*   **Not Independent**: Staff are facets of the Main Soul, not separate beings.
-*   **Directory Jail**: Every Staff Associate **MUST** be strictly confined to a specific `base_dir`. They **SHALL NOT** perceive files outside their scope.
-*   **Inheritance**: Staff inherit all Constitutional Laws (Sovereignty, Integrity).
+### Specialist Model (Scoped Souls)
+The functionality of the entity is extended through **Specialists**.
+*   **Not Independent**: Specialists are facets of the Main Soul, not separate beings.
+*   **Directory Jail**: Every Specialist **MUST** be strictly confined to a specific `base_dir`. They **SHALL NOT** perceive files outside their scope.
+*   **Inheritance**: Specialists inherit all Constitutional Laws (Sovereignty, Integrity).
 
 ---
 

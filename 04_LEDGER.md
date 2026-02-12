@@ -20,19 +20,19 @@ To ensure the audit log remains verifiable across different programming language
 *   **Consistency**: A `SIRE-v1` compliant Ledger must produce identical hashes for identical data regardless of implementation stack.
 
 ### Single Source of Truth
-*   **Requirement**: All components—including Extensions, Staff Associates, and external webhooks—**MUST** pipe their operational logs to the Main Ledger.
+*   **Requirement**: All components—including Extensions, **Specialists**, and external webhooks—**MUST** pipe their operational logs to the Main Ledger.
 *   **Prohibition**: Independent, siloed log files that bypass the Ledger are strictly prohibited to ensure a unified **Sovereign Audit**.
 
 ### Semantic Conflict Resolution
-To maintain **Deterministic Integrity** in a multi-technician environment, the system must handle write collisions:
-*   **The Problem**: Multiple Staff Associates or external pulses may attempt to update system state or the Ledger simultaneously.
+To maintain **Deterministic Integrity** in a multi-specialist environment, the system must handle write collisions:
+*   **The Problem**: Multiple **Specialists** or external pulses may attempt to update system state or the Ledger simultaneously.
 *   **The Protocol**: The Manager (The Cortex) performs a **Semantic Diff** before hashing an entry. If a collision is detected, the Manager must resolve the conflict based on **Constitutional Priority** (e.g., a Security Sentinel log overrides a Skill utility log) to ensure the SHA-256 chain remains linear and uncorrupted.
 
 ## 2. Event Log Specification
 
 Every entry in the Ledger must contain:
 1.  **Timestamp** (ISO-8601 UTC)
-2.  **Actor** (Soul ID, Staff ID, or System Process)
+2.  **Actor** (Soul ID, Specialist ID, or System Process)
 3.  **Action** (The specific tool or decision executed)
 4.  **Justification** (Link to a Sovereign Core pillar: Sovereignty, Integrity, Resilience, Evolution)
 5.  **Hash** (SHA-256 verification string)
@@ -47,7 +47,7 @@ The Ledger is not just a log; it is a learning mechanism. When a tool fails or s
 
 ### Genetic Patching (Self-Healing Docs)
 To prevent "Instruction Drift," SIRE periodically reviews "Trauma" logs:
-*   **Proposal**: The Manager proposes specific updates to a Technician's handbook (`AGENT.md`) to codify lessons learned.
+*   **Proposal**: The Manager proposes specific updates to a **Specialist's handbook** (`AGENT.md`) to codify lessons learned.
 *   **Evolution**: The Managing Associate approves these "Genetic Patches," permanently upgrading the system's baseline competence.
 ## 4. Point-in-Time Recovery (PITR)
 To maintain **Integrity** and **Resilience**, the Ledger protocol **MUST** support the restoration of previous valid states.

@@ -42,9 +42,8 @@ Before any **Level 2 or 3** action is initiated, the entity must perform a **Lin
 *   **Verification**: Test API connectivity, credential validity, and permission scopes **prior** to consuming the Privacy Budget or initiating high-level cloud reasoning.
 *   **Protocol**: If a validation check fails, SIRE must report the environmental failure to the Managing Associate and pause the task. This protects the **Integrity** of the host and prevents wasting resources on tasks doomed by infrastructure issues.
 
-### Manager-Technician Contract
-
-Communication between the **Main Soul** (Manager) and a **Staff Associate** (Technician) **MUST** be structured via a deterministic handoff to prevent prompt drift.
+### Manager-Specialist Protocol
+Communication between the **Main Soul** (Manager) and a **Specialist** **MUST** be structured via a deterministic handoff to prevent prompt drift.
 
 **The Directive Protocol (SDP)**: Intent handoff **MUST** use the following JSON Schema:
 
@@ -52,7 +51,7 @@ Communication between the **Main Soul** (Manager) and a **Staff Associate** (Tec
 {
   "id": "uuid-v4",
   "source": "main_soul",
-  "target": "tech_associate",
+  "target": "specialist",
   "intent": {
     "goal": "System Integrity Audit",
     "success_criteria": ["exit_code:0", "file_exists:/logs/integrity_report.log"]
@@ -68,7 +67,7 @@ Communication between the **Main Soul** (Manager) and a **Staff Associate** (Tec
 }
 ```
 
-**Execution**: The Technician's runner **SHALL** validate this schema before execution. If validation fails, the task is rejected with a **Protocol Violation** error. The runner also validates against local repository rules (e.g., `AGENT.yaml`).
+**Execution**: The Specialist's runner **SHALL** validate this schema before execution. If validation fails, the task is rejected with a **Protocol Violation** error. The runner also validates against local repository rules (e.g., `AGENT.yaml`).
 
 ### 4. Agency Level Spectrum
 

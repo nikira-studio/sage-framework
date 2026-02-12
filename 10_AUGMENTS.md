@@ -49,7 +49,7 @@ These augments are **optional extensions** to the core SIRE Framework. While not
 
 ### 9. Semantic Compression (Inter-Process Logic)
 *   **Goal**: Reduce token overhead and maximize reasoning density by 80-90%.
-*   **Concept**: **Inter-Process Logic (IPL)**. When internal Staff Associates or Technicians communicate, they bypass the high-token cost of natural language in favor of a "Raw Signal" dialect—a dense, structured semantic shorthand designed for AI-to-AI handoffs.
+*   **Concept**: **Inter-Process Logic (IPL)**. When internal **Specialists** communicate, they bypass the high-token cost of natural language in favor of a "Raw Signal" dialect—a dense, structured semantic shorthand designed for AI-to-AI handoffs.
 *   **Method**: 
     *   **Semantic Stripping**: A deterministic utility that removes natural language linguistic filler, preserving only the high-value intent and technical parameters.
     *   **The IPL Protocol**: A "Mind-to-Mind" layer where sub-processes exchange instructions using high-context structural tokens (shorthand YAML/JSON).
@@ -61,4 +61,4 @@ These augments are **optional extensions** to the core SIRE Framework. While not
     2.  **Lint**: Run the **Sovereignty Linter** (Section 11, Doc 05) to check for prohibited imports, hardcoded keys, or non-deterministic loops.
     3.  **Simulate**: Execute the logic in a **Sandboxed Simulation** (Section 5, Doc 03) to verify behavior against constraints.
     4.  **Confirm**: Subject the final artifact to 100% hash verification and log a Level 4 entry in the Ledger before committing it to the production skill registry.
-*   **Integrity Constraint**: The Forge SHALL NOT modify the **Sovereign Core** autonomously. Only Staff Associates and Augments may be "forged."
+*   **Integrity Constraint**: The Forge SHALL NOT modify the **Sovereign Core** autonomously. Only **Specialists** and Augments may be "forged."

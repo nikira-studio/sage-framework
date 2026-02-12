@@ -31,7 +31,7 @@ The Sovereign Entity is composed of several independent but interconnected syste
     *   **Vector DB**: High-performance semantic memory using local embeddings.
         *   **Privacy Isolation**: Every record is tagged with an `owner` (Associate identity). Access is strictly governed by the `SessionBoundary`.
 *   **Structured Dependency Mapping (Metadata)**:
-    *   **The Constraint**: Every Skill, Augment, or Staff Associate **MUST** define its environmental dependencies (e.g., system networks, persistent storage paths, environment-specific protocols) as structured metadata.
+    *   **The Constraint**: Every Skill, Augment, or **Specialist** **MUST** define its environmental dependencies (e.g., system networks, persistent storage paths, environment-specific protocols) as structured metadata.
     *   **The Guard**: This allows the **Sovereignty Linter** (Doc 05) to block execution if a dependency is missing or misconfigured, moving from prose-based assumptions to technical certainties.
 
 ### 5. Multi-Tenancy Architecture
@@ -44,7 +44,7 @@ Every Soul instance has exactly one Managing Associate who holds constitutional 
 - Each Associate has an isolated session boundary
 - Private memories are tagged with owner identity
 - Shared memories require explicit opt-in
-- Staff Associates operate within domain scopes visible only to Main Soul
+- **Specialists** operate within domain scopes visible only to Main Soul
 
 **Memory Visibility Hierarchy**:
 ```
@@ -52,17 +52,17 @@ Managing Associate (Full Access)
     └── Main Soul
         ├── Associate A (Private + Shared scope)
         ├── Associate B (Private + Shared scope)
-        └── Staff Associates (Domain-scoped)
-            ├── Network Specialist (network/ domain only)
-            ├── Document Analyst (documents/ domain only)
+        └── **Specialists** (Domain-scoped)
+            ├── Network Analyst (network/ domain only)
+            ├── Document Specialist (documents/ domain only)
             └── Code Reviewer (code/ domain only)
 ```
 
 **Privacy Boundaries**:
 - **Managing Associate**: Access to all memories (private, shared, staff)
 - **Associates**: Own private memories + explicitly shared memories
-- **Staff Associates**: Domain-scoped memories + Main Soul context (read-only)
-- **Main Soul**: All Staff Associate memories are visible
+- **Specialists**: Domain-scoped memories + Main Soul context (read-only)
+- **Main Soul**: All Specialist memories are visible
 
 ### 6. The Operational State Monitor
 
@@ -92,11 +92,11 @@ The system is architected as a series of **Universal Sockets** to support the [A
 | Framework Socket | Future Roadmap Feature | Enabling Logic |
 | :--- | :--- | :--- |
 | **Heartbeat Pulsing** | Sensory Perception (Vision/Voice) | Background cycles for proactive "Sensory Pulses." |
-| **Staff Soul Model** | Specialized Agents (Network/Code) | Scoped inheritance and domain isolation. |
+| **Specialist Model** | Specialized Agents (Network/Code) | Scoped inheritance and domain isolation. |
 | **Interaction Hierarchy** | Voice (Full Duplex) | Native "Call Me" and "Text Me" escalation logic. |
 | **Session Boundaries** | Multi-Tenant Collaboration | Tagged memory sharing and revocable access. |
 | **Ledger Hash Chain** | Collective Intelligence | Verifiable provenance for cross-Soul skill exchange. |
-| **IMP Protocol** | **Core Reasoning** | A structured inter-process protocol allowing Staff Associates to "consult" the Main Soul, creating an auditable logic trail. |
+| **IMP Protocol** | **Core Reasoning** | A structured inter-process protocol allowing Specialists to "consult" the Main Soul, creating an auditable logic trail. |
 
 By building to these sockets, the core system remains stable even as the feature set is radically expanded.
 
@@ -147,7 +147,7 @@ The Soul maintains an **Operational State**—a real-time risk posture based on 
     *   **Behavior**: Minimal autonomy (Level 0 only), external API block. Visual: **Static Red**.
 
 **Global Context Enforcement**:
-The Operational State is a **system-wide invariant**. All Extensions and Staff Associates **MUST** respect this state:
+The Operational State is a **system-wide invariant**. All Extensions and **Specialists** **MUST** respect this state:
 *   **Alert State Bypass**: If the Manager enters **Alert** state, all external network sockets and high-level model calls in Extensions MUST be automatically terminated by the Orchestrator.
 *   **Initialization**: Extensions SHALL NOT initialize if the system is in a critical failure state.
 
