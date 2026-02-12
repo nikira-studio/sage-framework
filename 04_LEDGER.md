@@ -23,6 +23,11 @@ To ensure the audit log remains verifiable across different programming language
 *   **Requirement**: All components—including Extensions, Staff Associates, and external webhooks—**MUST** pipe their operational logs to the Main Ledger.
 *   **Prohibition**: Independent, siloed log files that bypass the Ledger are strictly prohibited to ensure a unified **Sovereign Audit**.
 
+### Semantic Conflict Resolution
+To maintain **Deterministic Integrity** in a multi-technician environment, the system must handle write collisions:
+*   **The Problem**: Multiple Staff Associates or external pulses may attempt to update system state or the Ledger simultaneously.
+*   **The Protocol**: The Manager (The Cortex) performs a **Semantic Diff** before hashing an entry. If a collision is detected, the Manager must resolve the conflict based on **Constitutional Priority** (e.g., a Security Sentinel log overrides a Skill utility log) to ensure the SHA-256 chain remains linear and uncorrupted.
+
 ## 2. Event Log Specification
 
 Every entry in the Ledger must contain:

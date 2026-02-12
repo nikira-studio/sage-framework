@@ -30,6 +30,9 @@ The Sovereign Entity is composed of several independent but interconnected syste
     *   **Structured Store**: Primary store for structured metadata (Associates, audit logs, skills).
     *   **Vector DB**: High-performance semantic memory using local embeddings.
         *   **Privacy Isolation**: Every record is tagged with an `owner` (Associate identity). Access is strictly governed by the `SessionBoundary`.
+*   **Structured Dependency Mapping (Metadata)**:
+    *   **The Constraint**: Every Skill, Augment, or Staff Associate **MUST** define its environmental dependencies (e.g., Docker networks, NAS mount paths, API access) as structured metadata.
+    *   **The Guard**: This allows the **Sovereignty Linter** (Doc 05) to block execution if a dependency is missing or misconfigured, moving from prose-based assumptions to technical certainties.
 
 ### 5. Multi-Tenancy Architecture
 

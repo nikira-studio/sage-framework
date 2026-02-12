@@ -13,6 +13,15 @@ To verify system robustness, SIRE supports **Fire Drills**—controlled, simulat
 *   **Verification**: SIRE monitors how it handles the "crisis" and whether its internal recovery logic (Self-Healing) triggers correctly.
 *   **Visibility**: Fire drills are visible in the Live Mind dashboard (🔥), ensuring high visibility into system health tests.
 
+### 3. Memory Optimization & State Decay
+To prevent "Soul Bloat" and maintain token efficiency, SIRE implements a tiered memory management system.
+
+*   **Tier 1: Hot Context (The Soul)**: Active operational guidelines and current session facts. This is kept lean and immediately accessible.
+*   **Tier 2: Warm Context (The Substrate)**: Vector-indexed facts and RAG data. Accessible via recall but not part of the active LLM context.
+*   **Tier 3: Cold Context (The Ledger)**: Archival history and deep audit logs.
+*   **Confidence Decay**: Memories or "Lessons Learned" that are not accessed or re-confirmed over a period of 30 days lose "Confidence" and are automatically pruned from the **Hot Context** (Tier 1) and archived into the **Cold Context** (Tier 3).
+*   **Summarization**: During "Dream Mode," the entity summarizes cold memory clusters into dense "Biological Nuggets" to preserve wisdom without the token cost of raw logs.
+
 ## System Connectivity
 Ensure all core services are reachable and authenticated.
 *   **Intelligence Provider**: Verify API keys and network access for cloud levels.
