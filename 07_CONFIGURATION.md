@@ -149,7 +149,7 @@ threshold_presets:
     mfa_trigger_score: 0.7
     ledger_trigger_score: 0.5
     level_3_manifest_score: 0.6
-    description: "Suitable for single-user domains with trusted environment"
+    description: "Suitable for single-user domains with trusted environment. All Level 3/4 require manifests. More friction than SIRE Lite but maintains strong governance."
   
   # Balanced Preset (Moderate approvals for mixed operations)
   balanced:
